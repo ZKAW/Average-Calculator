@@ -1,2 +1,2 @@
-# grade_calculator
-Automatic grade calculator
+# Grade Calculator
+Automatic grade calculator working in nodeJS.
