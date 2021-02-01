@@ -6,6 +6,7 @@ class Main {
         }
 
         this.readline = require('readline')
+        this.floatValidator = RegExp('^[0-9.]*$', 'im')
         this.registerEvents();
     }
 
@@ -22,21 +23,35 @@ class Main {
         
         var _this = this
 
-        rl.question("Entrez une note [vide=STOP]: ", function(gradeAwr) {
+        rl.question("Entrez une note [vide=STOP]: ", function q1 (gradeAwr) {
+
             if (gradeAwr.length < 1 || gradeAwr.toLowerCase() === 'stop') {
                 _this.finishRequest(_this.els.total, _this.els.dividend)
                 rl.close();
                 return
-            }
-            rl.question("   -> Entrez le coef de cette note [vide=1]: ", function(coefAwr) {                 
-                rl.close();
-                {
-                    if (coefAwr.length < 1) coefAwr = 1
 
-                    console.log(`\nLa note ${gradeAwr} coef x${coefAwr} a été ajoutée avec sucès !\n`)
-                    _this.addGrade(parseFloat(gradeAwr), parseFloat(coefAwr))
+            } else if (!_this.floatValidator.test(gradeAwr)) {
+                console.log('\nEntrez uniquement des nombres entiers ou à virgule. Veuillez re-essayer.\n')
+                rl.close()
+                _this.askGrade()
+                return
+            }
+
+            rl.question("Entrez le coef de cette note [vide=1]: ", function(coefAwr) {                 
+                if (coefAwr.length < 1) coefAwr = 1
+                
+                if (!_this.floatValidator.test(coefAwr)) {
+                    console.log('\nEntrez uniquement des nombres entiers ou à virgule. Veuillez re-essayer.\n')
+                    rl.close()
                     _this.askGrade()
+                    return
                 }
+
+                console.log(`\nLa note ${gradeAwr} coef x${coefAwr} a été ajoutée avec sucès !\n`)
+                rl.close();
+                _this.addGrade(parseFloat(gradeAwr), parseFloat(coefAwr))
+                _this.askGrade()
+
             })
         })
     }
