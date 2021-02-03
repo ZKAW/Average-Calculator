@@ -1,59 +1,57 @@
 class Main {
     constructor() {
         this.els = {
+            addBtn: document.querySelector('.addBtn'),
+            numberField: document.querySelector('#numberField'),
+            coefField: document.querySelector('#coefField'),
+            infoLabel: document.querySelector('.infoLabel')
         }
         
         this.total = 0,
         this.dividend = 0
-        this.readline = require('readline')
-        this.floatValidator = RegExp('^[0-9.]*$', 'im')
+        this.floatValidator = RegExp('^([0-9]|[0-9][.,][0-9])*$', 'im')
         this.registerEvents();
+        // this.askGrade()
     }
 
     registerEvents() {
-        this.askGrade()
+        // Btn click listener
+        this.els.addBtn.addEventListener('click', () => {
+            this.getInput()
+        })   
+
+        // Key listener
+        document.addEventListener("keydown", event => {
+            if (event.key == 'Enter') {
+                this.getInput()
+            }
+        })
     }
-    
 
-    askGrade() {
-        var rl = this.readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
+    getInput() {
+        let nbrAwr = this.els.numberField.value.replace(',','.')
+        let coefAwr = this.els.coefField.value.replace(',','.')
+
+        this.els.numberField.value = ''
+        this.els.coefField.value = ''
+        this.els.numberField.focus()
+
+
+        if (coefAwr.length < 1 || coefAwr == undefined || coefAwr == null) coefAwr = '1'
         
-        var _this = this
-
-        rl.question("Entrez une note [vide=STOP]: ", function q1 (gradeAwr) {
-
-            if (gradeAwr.length < 1 || gradeAwr.toLowerCase() === 'stop') {
-                _this.finishRequest(_this.total, _this.dividend)
-                rl.close();
+        if (nbrAwr.length > 0) {
+            if (!this.floatValidator.test(nbrAwr) || !this.floatValidator.test(coefAwr)) {
+                this.els.infoLabel.innerHTML = 'Veuillez entrer uniquement des nombres entiers ou à virgule positifs.'
                 return
-
-            } else if (!_this.floatValidator.test(gradeAwr)) {
-                console.log('\nEntrez uniquement des nombres entiers ou à virgule. Veuillez re-essayer.\n')
-                rl.close()
-                _this.askGrade()
+    
+            } else {
+                // this.els.infoLabel.innerHTML = `\nLa note ${nbrAwr} coef x${coefAwr} a été ajoutée avec succès !`
+                this.addGrade(parseFloat(nbrAwr), parseFloat(coefAwr))
+                this.finishRequest(this.total, this.dividend)
                 return
             }
+        }
 
-            rl.question("Entrez le coef de cette note [vide=1]: ", function(coefAwr) {                 
-                if (coefAwr.length < 1) coefAwr = 1
-                
-                if (!_this.floatValidator.test(coefAwr)) {
-                    console.log('\nEntrez uniquement des nombres entiers ou à virgule. Veuillez re-essayer.\n')
-                    rl.close()
-                    _this.askGrade()
-                    return
-                }
-
-                console.log(`\nLa note ${gradeAwr} coef x${coefAwr} a été ajoutée avec sucès !\n`)
-                rl.close();
-                _this.addGrade(parseFloat(gradeAwr), parseFloat(coefAwr))
-                _this.askGrade()
-
-            })
-        })
     }
 
     calcMoy(total, dividend) {
@@ -74,9 +72,10 @@ class Main {
             let finalGrade = this.calcMoy(total, dividend)
             finalGrade = Number((finalGrade).toFixed(2));
 
-            console.log(`\nVotre moyenne est de ${finalGrade}.`)
+            this.els.infoLabel.innerHTML = `\nVotre moyenne est de ${finalGrade}.`
+            return
         } else {
-            console.log('\nVeuillez entrer au minimum une note avec un coef supérieur à 0.')
+            this.els.infoLabel.innerHTML = '\nVeuillez entrer au minimum une note avec un coef supérieur à 0.'
             return
         }
     }

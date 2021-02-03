@@ -10,19 +10,25 @@
 
 <body>
 
-    <div class="form-group">
+    <div class="form-group noselect">
         <span>Note</span>
-        <input class="form-field" id="number" type="number" placeholder="Nombre">
+        <input class="form-field" id="numberField" type="number" placeholder="Nombre" tabindex='1' autofocus>
     </div>
     
-    <div class="form-group">
+    <div class="form-group noselect">
         <span>Coef x</span>
-        <input class="form-field" id="coef" type="number" placeholder="Coef [défaut=1]">
+        <input class="form-field" id="coefField" type="number" placeholder="Coef [défaut=1]" tabindex='2'>
     </div>
 
-    <div class="form-group">
-        <div class="btn-container">
-            <div class="btn">Ajouter</div>
+    <div class="form-group noselect">
+        <div class="addBtn-container">
+            <div class="addBtn">Ajouter</div>
+        </div>
+    </div>
+
+    <div class="form-group noselect">
+        <div class="infoLabel-container">
+            <div class="infoLabel"></div>
         </div>
     </div>
 

@@ -4,7 +4,8 @@
   "description": "Grade calculator",
   "main": "js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/ZKAW/grade_calculator#readme",
   "dependencies": {
+    "electron": "^11.2.2",
     "electron-reload": "^1.5.0",
     "prompt": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron-reloader": "^1.2.0"
   }
 }
