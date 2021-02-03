@@ -1,10 +1,10 @@
 class Main {
     constructor() {
         this.els = {
-            total: 0,
-            dividend: 0
         }
-
+        
+        this.total = 0,
+        this.dividend = 0
         this.readline = require('readline')
         this.floatValidator = RegExp('^[0-9.]*$', 'im')
         this.registerEvents();
@@ -26,7 +26,7 @@ class Main {
         rl.question("Entrez une note [vide=STOP]: ", function q1 (gradeAwr) {
 
             if (gradeAwr.length < 1 || gradeAwr.toLowerCase() === 'stop') {
-                _this.finishRequest(_this.els.total, _this.els.dividend)
+                _this.finishRequest(_this.total, _this.dividend)
                 rl.close();
                 return
 
@@ -64,8 +64,8 @@ class Main {
     addGrade(grade, coef) {
         var res = grade*coef
 
-        this.els.total += res;
-        this.els.dividend += coef;
+        this.total += res;
+        this.dividend += coef;
     }
 
     finishRequest(total, dividend) {
