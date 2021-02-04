@@ -46,7 +46,7 @@ class Main {
             if (coefAwr.length < 1 || coefAwr == undefined || coefAwr == null) coefAwr = '1'
         
             if (!this.floatValidator.test(nbrAwr) || !this.floatValidator.test(coefAwr)) {
-                this.els.infoLabel.innerHTML = 'Veuillez entrer uniquement des nombres entiers ou à virgule positifs.'
+                this.els.infoLabel.innerHTML = "Veuillez entrer uniquement des chiffres d'une valeur supérieure à zéro."
                 return
     
             } else {
