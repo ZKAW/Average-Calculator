@@ -12,7 +12,7 @@ To install dev dependencies -> `npm install` in the project dir.
   - `npm buildall` -> Build both win32 32bit and win32 64bit version.
 
   * The output will be stored in "`build/`".
-  * The platform can be change in the package.json scripts.
+  * The build platform can be change in the `package.json` scripts.
 
 ### How to start
 
