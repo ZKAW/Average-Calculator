@@ -13,7 +13,7 @@ To install dev dependencies -> `npm install` in the project dir.
 
   The output will be stored in "`build/`".
   
-  * Note that platform can be change in the package.json scripts.
+  * Note that platform can be change in the package.json scripts.
 
 ### How to start
 
