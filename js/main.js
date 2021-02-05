@@ -16,7 +16,7 @@ function createWindow () {
   
     win.removeMenu()
     win.loadFile('index.html')
-    // win.maximize()
+    win.webContents.openDevTools()
   }
   
   app.whenReady().then(createWindow)

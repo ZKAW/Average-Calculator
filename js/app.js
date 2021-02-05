@@ -9,13 +9,14 @@ class Main {
             resultLabel: document.querySelector('.resultLabel')
         }
         
+        this.lang = undefined;
         this.total = 0,
         this.dividend = 0
         this.floatValidator = RegExp('^([0-9]|[0-9][.,][0-9])*$', 'im')
+        this.setLang();
         this.registerEvents();
-        // this.askGrade()
     }
-
+    
     registerEvents() {
         // Btn click listener
         this.els.addBtn.addEventListener('click', () => {
@@ -32,6 +33,11 @@ class Main {
                 this.getInput()
             }
         })
+
+    }
+
+    setLang() {
+        this.lang = require('./config/lang/FR.js')
     }
 
     getInput() {
@@ -46,19 +52,19 @@ class Main {
             if (coefAwr.length < 1 || coefAwr == undefined || coefAwr == null) coefAwr = '1'
         
             if (!this.floatValidator.test(nbrAwr) || !this.floatValidator.test(coefAwr)) {
-                this.els.infoLabel.innerHTML = "Veuillez entrer uniquement des chiffres d'une valeur supérieure à zéro."
+                this.els.infoLabel.innerHTML = this.lang.negativNumberError
                 return
     
             } else {
-                this.els.infoLabel.innerHTML = `La note ${nbrAwr} coef x${coefAwr} a été ajoutée avec succès !`
-                this.addGrade(parseFloat(nbrAwr), parseFloat(coefAwr))
+                this.els.infoLabel.innerHTML = this.lang.successAdd(nbrAwr, coefAwr)
+                this.addValue(parseFloat(nbrAwr), parseFloat(coefAwr))
                 this.els.resetBtn.classList.remove('nodisplay')
                 this.els.resetBtn.style.transition = '';
                 this.finishRequest(this.total, this.dividend)
                 return
             }
         } else {
-            this.els.infoLabel.innerHTML = 'Veuillez remplir au moins la case "Note"'
+            this.els.infoLabel.innerHTML = this.lang.emptyFieldError
             return
         }
     }
@@ -76,13 +82,13 @@ class Main {
     }
     
 
-    calcMoy(total, dividend) {
+    calcAvrg(total, dividend) {
         const moy = (total/dividend)
         return moy
     }
 
-    addGrade(grade, coef) {
-        var res = grade*coef
+    addValue(number, coef) {
+        var res = number*coef
 
         this.total += res;
         this.dividend += coef;
@@ -91,13 +97,13 @@ class Main {
     finishRequest(total, dividend) {
 
         if (dividend != 0) {
-            let finalGrade = this.calcMoy(total, dividend)
-            finalGrade = Number((finalGrade).toFixed(2));
+            let finalAverage = this.calcAvrg(total, dividend)
+            finalAverage = Number((finalAverage).toFixed(2));
 
-            this.els.resultLabel.innerHTML = `Votre moyenne est de ${finalGrade}.`
+            this.els.resultLabel.innerHTML = this.lang.resultMsg(finalAverage)
             return
         } else {
-            this.els.resultLabel.innerHTML = 'Veuillez entrer au minimum une note avec un coef supérieur à 0.'
+            this.els.resultLabel.innerHTML = this.lang.negativCoefError
             return
         }
     }
