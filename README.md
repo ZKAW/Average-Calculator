@@ -1,2 +1,11 @@
-# Grade Calculator
-Automatic grade calculator working in nodeJS.
+# Average calculator
+
+#### Automatic average calculator working in nodeJS and ElectronJS.
+
+
+To build .exe -> 
+  - `npm buil32` -> Build win32 32bit version 
+  - `npm build64` -> Build win32 64bit version 
+  - `npm buildall` -> Build both win32 32bit and win32 64bit version 
+
+The output will be stored in "build/".
