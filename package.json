@@ -1,25 +1,25 @@
 {
-  "name": "grade_calculator",
+  "name": "average_calculator",
   "version": "1.0.0",
-  "description": "Grade calculator",
+  "description": "Average calculator",
   "main": "js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build32": "electron-packager ./ \"Grade calculator\" -p --platform=win32 --arch=ia32 --overwrite --out \"build\"",
-    "build64": "electron-packager ./ \"Grade calculator\" -p --platform=win32 --arch=x64 --overwrite --out \"build\"",
+    "build32": "electron-packager ./ \"Average calculator\" -p --platform=win32 --arch=ia32 --overwrite --out \"build\"",
+    "build64": "electron-packager ./ \"Average calculator\" -p --platform=win32 --arch=x64 --overwrite --out \"build\"",
     "buildall": "npm run build32 && npm run build64"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZKAW/grade_calculator.git"
+    "url": "git+https://github.com/ZKAW/Average-Calculator.git"
   },
-  "author": "",
+  "author": "ZKAW",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZKAW/grade_calculator/issues"
+    "url": "https://github.com/ZKAW/Average-Calculator/issues"
   },
-  "homepage": "https://github.com/ZKAW/grade_calculator#readme",
+  "homepage": "https://github.com/ZKAW/Average-Calculator#readme",
   "devDependencies": {
     "electron": "^11.2.2",
     "electron-packager": "^15.2.0",
