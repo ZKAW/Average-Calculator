@@ -65,7 +65,6 @@ class Main {
             _this.els.numberField.placeholder = _this.lang.numberPlaceholder
             _this.els.coefField.placeholder = _this.lang.coefPlaceholder
         }
-
     }
 
     getInput() {
