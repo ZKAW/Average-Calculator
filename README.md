@@ -7,9 +7,9 @@
 To install dev dependencies -> `npm install` in the project dir.
 
 ###### To build .exe ->
-  - `npm buil32` -> Build win32 32bit version.
-  - `npm build64` -> Build win32 64bit version.
-  - `npm buildall` -> Build both win32 32bit and win32 64bit version.
+  - `npm run buil32` -> Build win32 32bit version.
+  - `npm run build64` -> Build win32 64bit version.
+  - `npm run buildall` -> Build both win32 32bit and win32 64bit version.
 
   * The output will be stored in "`build/`".
   * The build platform can be change in the `package.json` scripts.
