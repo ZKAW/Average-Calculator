@@ -1,21 +1,21 @@
 function successAdd(nbrAwr, coefAwr) {
-    return `The number ${nbrAwr} coefficient x${coefAwr} has been added successfully !`
-  }
+  return `Die Zahl ${nbrAwr} mit dem Koeffizienten x${coefAwr} wurde erfolgreich hinzugefügt!`
+}
+
+function resultMsg(finalAverage) {
+  return `Der Durchschnitt liegt bei ${finalAverage}.`
+}
   
-  function resultMsg(finalAverage) {
-    return `The average is ${finalAverage}.`
-  }
-  
-  module.exports = {
-    negativNumberError: "Please enter only numbers with a value greater than zero.",
-    negativCoefError: 'Please enter at least one number with a coefficient greater than 0.',
-    emptyFieldError: 'Please fill in at least the "Number" box',
-    numberLabel: 'Number',
-    coefLabel: 'Coef x',
-    resetBtnText: 'Reset',
-    addBtnText: 'Add',
-    numberPlaceholder: 'Positive number',
-    coefPlaceholder: 'Coef [default=1]',
-    successAdd: successAdd,
-    resultMsg: resultMsg
-  };
+module.exports = {
+  negativNumberError: "Bitte geben Sie nur Zahlen mit einem Wert größer als Null ein.",
+  negativCoefError: 'Bitte geben Sie mindestens eine Zahl mit einem Koeffizienten größer als 0 ein.',
+  emptyFieldError: 'Bitte füllen Sie mindestens das Feld "Nummer" aus.',
+  numberLabel: 'Nummer',
+  coefLabel: 'Koef x',
+  resetBtnText: 'Zurücksetzen',
+  addBtnText: 'Hinzufügen',
+  numberPlaceholder: 'Positive Zahl',
+  coefPlaceholder: 'Koef [default=1]',
+  successAdd: successAdd,
+  resultMsg: resultMsg
+};

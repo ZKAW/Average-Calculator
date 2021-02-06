@@ -7,9 +7,9 @@ function resultMsg(finalAverage) {
 }
 
 module.exports = {
-  negativNumberError: "Please enter only numbers with a value greater than zero.",
+  negativNumberError: "Please only enter numbers with a value above zero.",
   negativCoefError: 'Please enter at least one number with a coefficient greater than 0.',
-  emptyFieldError: 'Please fill in at least the "Number" box',
+  emptyFieldError: 'Please fill in at least the "Number" box.',
   numberLabel: 'Number',
   coefLabel: 'Coef x',
   resetBtnText: 'Reset',

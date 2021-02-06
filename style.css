@@ -144,7 +144,6 @@ body .form-group:not(:last-child) {
   display: table-cell;
   vertical-align: center;
   transition: all 0.35s ease;
-  margin-right: 10px;
 }
 
 .addBtn:hover {
@@ -169,7 +168,6 @@ body .form-group:not(:last-child) {
   display: table-cell;
   vertical-align: middle;
   transition: all 0.35s ease;
-  margin-left: 10px;
 }
 
 .resetBtn:hover {
