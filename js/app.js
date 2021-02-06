@@ -13,9 +13,9 @@ class Main {
         }
         
         this.lang = undefined
+        this.defaultLang= 'US'
         this.total = 0
         this.dividend = 0
-        this.ipAddress = '127.0.0.1'
         this.floatValidator = RegExp('^([0-9]|[0-9][.,][0-9])*$', 'im')
         this.setLang();
         this.registerEvents();
@@ -53,7 +53,7 @@ class Main {
 
         .catch((data, status) => {
             console.log('Request failed, using default US language.');
-            _this.lang = require(`./config/lang/US.js`)
+            _this.lang = require(`./config/lang/${_this.defaultLang}.js`)
             setHTMLContent()
         })
 
