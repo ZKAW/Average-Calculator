@@ -131,8 +131,9 @@ body .form-group:not(:last-child) {
 }
 
 
-
 .addBtn {
+  position: absolute;
+  right: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   cursor: pointer;
@@ -141,8 +142,9 @@ body .form-group:not(:last-child) {
   color: #F5F9FF;
   background-color: var(--addBtn-background);
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: center;
   transition: all 0.35s ease;
+  margin-right: 10px;
 }
 
 .addBtn:hover {
@@ -155,6 +157,8 @@ body .form-group:not(:last-child) {
 }
 
 .resetBtn {
+  position: relative;
+  left: 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   cursor: pointer;
@@ -165,7 +169,7 @@ body .form-group:not(:last-child) {
   display: table-cell;
   vertical-align: middle;
   transition: all 0.35s ease;
-  margin: auto 20px;
+  margin-left: 10px;
 }
 
 .resetBtn:hover {

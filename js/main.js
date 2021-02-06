@@ -11,12 +11,12 @@ function createWindow () {
       height: 600,
       webPreferences: {
         nodeIntegration: true
-      } 
+      }
     })
   
     win.removeMenu()
     win.loadFile('index.html')
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
   }
   
   app.whenReady().then(createWindow)

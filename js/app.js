@@ -5,13 +5,17 @@ class Main {
             resetBtn: document.querySelector('.resetBtn'),
             numberField: document.querySelector('#numberField'),
             coefField: document.querySelector('#coefField'),
+            numberLabel: document.querySelector('.numberLabel'),
+            coefLabel: document.querySelector('.coefLabel'),
             infoLabel: document.querySelector('.infoLabel'),
-            resultLabel: document.querySelector('.resultLabel')
+            resultLabel: document.querySelector('.resultLabel'),
+            
         }
         
-        this.lang = undefined;
-        this.total = 0,
+        this.lang = undefined
+        this.total = 0
         this.dividend = 0
+        this.ipAddress = '127.0.0.1'
         this.floatValidator = RegExp('^([0-9]|[0-9][.,][0-9])*$', 'im')
         this.setLang();
         this.registerEvents();
@@ -33,11 +37,35 @@ class Main {
                 this.getInput()
             }
         })
-
     }
 
     setLang() {
-        this.lang = require('./config/lang/FR.js')
+        var countryCode
+        var _this = this
+        fetch('https://extreme-ip-lookup.com/json/')
+        .then( res => res.json())
+        .then(response => {
+            countryCode = response.countryCode
+            _this.lang = require(`./config/lang/${countryCode}.js`)
+            console.log('lang:',countryCode)
+            setHTMLContent()
+        })
+
+        .catch((data, status) => {
+            console.log('Request failed, using default US language.');
+            _this.lang = require(`./config/lang/US.js`)
+            setHTMLContent()
+        })
+
+        function setHTMLContent() {
+            _this.els.addBtn.innerHTML = _this.lang.addBtnText
+            _this.els.resetBtn.innerHTML = _this.lang.resetBtnText
+            _this.els.numberLabel.innerHTML = _this.lang.numberLabel
+            _this.els.coefLabel.innerHTML = _this.lang.coefLabel
+            _this.els.numberField.placeholder = _this.lang.numberPlaceholder
+            _this.els.coefField.placeholder = _this.lang.coefPlaceholder
+        }
+
     }
 
     getInput() {
