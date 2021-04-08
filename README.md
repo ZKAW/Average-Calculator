@@ -1,6 +1,6 @@
 # Average calculator
 
-## Automatic average calculator working in nodeJS and ElectronJS.
+## Automatic average calculator working with nodeJS and ElectronJS.
 
 ### How to install
 
